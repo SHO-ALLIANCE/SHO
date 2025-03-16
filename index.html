@@ -9,43 +9,69 @@
 <body>
 
     <header>
-        <h1 class="sho-heading"><span>Strategic Heroes Oracles</span></h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="alliances.html">Alliances</a></li>
-                <li><a href="tournaments.html">Tournaments</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="recruitment.html">Recruitment</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Navigation Container -->
+  <div class="nav-container">
+    <!-- SHO Title (Optional) -->
+    <h1 class="sho-heading">Strategic Heroes Oracles</h1>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <!-- Logo (Optional) -->
+      <div class="logo">
+        <img src="images/sho-logo.png" alt="SHO Logo">
+      </div>
+
+      <!-- Hamburger Icon -->
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Navigation Links -->
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="alliances.html">Alliances</a></li>
+        <li><a href="tournaments.html">Tournaments</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="recruitment.html">Recruitment</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- JS to Toggle the Menu -->
+<script>
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+  }
+</script>
 <section id="about" class="about-section">
     <div class="container">
         <h2>About Strategic Heroes Oracles (SHO)</h2>
-        <p><strong> Strategic Heroes Oracles (SHO) </strong> is a community of elite gamers united by strategy, skill, and teamwork. Founded with a vision to dominate in multiple gaming worlds, SHO has grown into a powerhouse across various competitive games.</p>
+        <p> Strategic Heroes Oracles (SHO) is a community of elite gamers united by strategy, skill, and teamwork. Founded with a vision to dominate in multiple gaming worlds, SHO has grown into a powerhouse across various competitive games.</p>
         
         <h3>Who We Are?</h3>
         <ul>
-            <li>🔥 A <strong> top-tier alliance </strong> in multiple strategy and esports games.</li>
-            <li>🔥 A community of <strong> passionate gamers, strategists, and champions </strong>.</li>
-            <li>🔥 A home for <strong> friendly competition, tournaments, and exclusive events </strong>.</li>
+            <li>🔥 A top-tier alliance in multiple strategy and esports games.</li>
+            <li>🔥 A community of passionate gamers, strategists, and champions .</li>
+            <li>🔥 A home for friendly competition, tournaments, and exclusive events.</li>
         </ul>
 
         <h3>What We Do?</h3>
         <ul>
-            <li>🎮 Compete in <strong> Hitwicket, Free Fire, BGMI, eFootball </strong>, and more.</li>
-            <li>🏆 Host <strong> tournaments, PvP battles, and alliance championships </strong>.</li>
-            <li>📢 Share <strong> game guides, tips, and live gameplay on YouTube </strong>.</li>
-            <li>🚀 Recruit and train <strong> the best players to join our ranks </strong>.</li>
+            <li>🎮 Compete in Hitwicket, Free Fire, BGMI, eFootball, and more.</li>
+            <li>🏆 Host tournaments, PvP battles, and alliance championships.</li>
+            <li>📢 Share game guides, tips, and live gameplay on YouTube.</li>
+            <li>🚀 Recruit and train the best players to join our ranks.</li>
         </ul>
 
         <h3>Why Join SHO?</h3>
         <ul>
-            <li>✔ Be part of a <strong> strong and supportive alliance </strong>.</li>
-            <li>✔ Participate in <strong> exclusive in-game events and challenges </strong>.</li>
-            <li>✔ Get <strong> recognized as one of the best in competitive gaming </strong>.</li>
+            <li>✔ Be part of a strong and supportive alliance.</li>
+            <li>✔ Participate in exclusive in-game events and challenges .</li>
+            <li>✔ Get recognized as one of the best in competitive gaming .</li>
         </ul>
     </div>
 </section>
