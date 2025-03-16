@@ -7,6 +7,68 @@ body {
     color: white;
 }
 
+/* Sticky Navigation - ensures nav stays above content */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Higher than other elements */
+    background: rgba(26,26,26, 0.95); /* Slightly transparent dark background */
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation Container */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Navigation List */
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Navigation Items */
+.navbar ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+/* Navigation Links */
+.navbar ul li a {
+    color: #ffcc00; /* Base color */
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect on Links */
+.navbar ul li a:hover {
+    color: #ffa500; /* Changes to a warmer orange on hover */
+}
+
+/* Underline Animation on Hover */
+.navbar ul li a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffa500;
+    transition: width 0.3s ease;
+}
+
+.navbar ul li a:hover::after {
+    width: 100%;
+}
+
+/* Optional: Active Link Styling */
+.navbar ul li a.active {
+    color: #ffa500;
+}
 /* Header Section */
 
 
@@ -24,39 +86,6 @@ header h1 {
 }
 
 
-/* Header Animation - Strategic Heroes Oracles */
-.sho-heading {
-    font-size: 48px;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-    background: linear-gradient(90deg, #FFD700, #FFA500);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: glowingText 2s infinite alternate, slideIn 1.5s ease-in-out;
-    letter-spacing: 3px;
-    text-shadow: 4px 4px 10px rgba(255, 140, 0, 0.8);
-}
-
-@keyframes glowingText {
-    0% {
-        text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
-    }
-    100% {
-        text-shadow: 0 0 20px #FFA500, 0 0 30px #FFD700;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
 
 
 nav ul {
@@ -487,36 +516,35 @@ tbody tr:hover {
     margin-bottom: 20px;
 }
 
+/* Header Animation - Strategic Heroes Oracles */
 .sho-heading {
     font-size: 48px;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-    background: linear-gradient(90deg, #ffcc00, #ff6600, #ff0000);
+    background: linear-gradient(90deg, #FFD700, #FFA500);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: glowingText 2s infinite alternate, slideIn 1.5s ease-in-out;
     letter-spacing: 3px;
-    text-shadow: 4px 4px 10px rgba(255, 102, 0, 0.8);
+    text-shadow: 4px 4px 10px rgba(255, 140, 0, 0.8);
 }
 
-/* Glow Animation */
 @keyframes glowingText {
     0% {
-        text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff6600, 0 0 30px #ff0000;
+        text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
     }
     100% {
-        text-shadow: 0 0 20px #ff0000, 0 0 30px #ff6600, 0 0 40px #ffcc00;
+        text-shadow: 0 0 20px #FFA500, 0 0 30px #FFD700;
     }
 }
 
-/* Slide-In Animation */
 @keyframes slideIn {
-    0% {
+    from {
         transform: translateY(-50px);
         opacity: 0;
     }
-    100% {
+    to {
         transform: translateY(0);
         opacity: 1;
     }
