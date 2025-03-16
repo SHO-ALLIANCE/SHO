@@ -405,3 +405,45 @@ tbody tr:hover {
     font-size: 14px;
     color: #ddd;
 }
+
+.about-section {
+    padding: 50px 20px;
+    background: linear-gradient(to right, #111, #222); /* Stylish dark gradient */
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.about-section h2 {
+    font-size: 36px;
+    color: #ffcc00; /* Golden touch */
+    margin-bottom: 20px;
+}
+
+.about-section h3 {
+    font-size: 28px;
+    margin-top: 20px;
+    color: #ff6600; /* Stylish orange */
+}
+
+.about-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-section ul li {
+    font-size: 18px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-section ul li strong {
+    color: #fff;
+}
+
+.about-section p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
