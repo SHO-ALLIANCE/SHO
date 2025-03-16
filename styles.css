@@ -266,3 +266,31 @@ th {
 tbody tr:hover {
     background: rgba(255, 69, 0, 0.2);
     }
+/* Match Highlights Section */
+#highlights {
+    background: #1a1a1a;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.highlights-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.video {
+    width: 300px;
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 69, 0, 0.6);
+}
+
+.video p {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #ffd700;
+    }
