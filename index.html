@@ -83,6 +83,11 @@
         <a href="alliances.html" class="btn">Explore Alliances</a>
         <a href="recruitment.html" class="btn secondary">Join Us</a>
     </div>
+        <div class="faq-button-container">
+    <a href="faq.html" class="faq-button">
+        ❓ Got Questions? Visit Our FAQ
+    </a>
+        </div>
     </section>
 
     <section id="youtube">
@@ -221,6 +226,18 @@
     </div>
   </div>
     </footer>
-
+    
+<script>
+    document.querySelector('.faq-button').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: document.querySelector('.faq-button-container').offsetTop,
+            behavior: 'smooth'
+        });
+        setTimeout(() => {
+            window.location.href = "faq.html";
+        }, 800); // Redirects after scrolling
+    });
+</script>
 </body>
 </html>
