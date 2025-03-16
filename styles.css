@@ -549,3 +549,27 @@ tbody tr:hover {
         opacity: 1;
     }
 }
+@media (max-width: 768px) {
+    header {
+        padding: 10px 0;
+    }
+    
+    .sho-heading {
+        font-size: 36px; /* Reduced font size for mobile */
+    }
+    
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .navbar ul li {
+        margin: 10px 0;  /* Spacing for vertical stacking */
+    }
+    
+    .navbar ul li a {
+        font-size: 16px;  /* Slightly smaller text */
+    }
+    }
