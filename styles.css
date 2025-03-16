@@ -921,3 +921,8 @@ footer {
     color: #ffcc00;
     cursor: pointer;
 }
+.navbar {
+    display: flex;
+    align-items: center; /* Align items properly */
+    justify-content: space-between;
+}
