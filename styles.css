@@ -144,3 +144,41 @@ button:hover {
     font-size: 1.5em;
     margin-bottom: 20px;
     }
+/* Hero Section Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Glowing Button Effect */
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: linear-gradient(45deg, #ff4500, #ffd700, #ff4500);
+    z-index: -1;
+    transition: opacity 0.4s ease-in-out;
+    opacity: 0;
+}
+
+button:hover::before {
+    opacity: 1;
+    }
