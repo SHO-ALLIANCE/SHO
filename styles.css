@@ -780,7 +780,7 @@ footer {
 .loader-logo {
     width: 100px; /* Adjust size as needed */
     height: auto;
-    animation: pulse 1.5s infinite alternate ease-in-out;
+    animation: pulse 0.5s infinite alternate ease-in-out;
 }
 
 /* Pulse Animation */
