@@ -332,3 +332,49 @@ tbody tr:hover {
     font-size: 14px;
     color: #ddd;
 }
+
+/* SHO Leadership Section */
+#sho-leaders {
+    text-align: center;
+    padding: 50px 0;
+    background: linear-gradient(90deg, #222, #111);
+    color: white;
+}
+
+.leaders-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.leader-card {
+    background: #333;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.leader-card:hover {
+    transform: scale(1.05);
+}
+
+.leader-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #ffcc00;
+}
+
+.leader-card h3 {
+    color: #ffcc00;
+    margin: 10px 0;
+}
+
+.leader-card p {
+    font-size: 14px;
+    color: #ddd;
+}
