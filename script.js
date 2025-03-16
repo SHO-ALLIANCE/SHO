@@ -16,7 +16,7 @@ document.querySelectorAll("a").forEach(link => {
             document.getElementById("loader").style.display = "flex";
             setTimeout(() => {
                 window.location.href = this.getAttribute("href");
-            }, 1000);
+            }, 500);
         }
     });
 });
