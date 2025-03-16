@@ -6,6 +6,113 @@ body {
     background-color: #121212;
     color: white;
 }
+/* Navigation Container */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0a0a0a; /* Dark background */
+  padding: 0.5rem 1rem;
+  position: sticky; /* Stays on top when scrolling */
+  top: 0;
+  z-index: 999; /* Ensures nav is above other elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* SHO Heading inside Nav (Optional) */
+.sho-heading {
+  font-size: 28px;
+  color: #ffcc00;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Logo (Optional) */
+.logo img {
+  width: 50px;
+  height: auto;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Hamburger Icon */
+.menu-icon {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.menu-icon span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 4px;
+  transition: 0.4s;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex; /* Horizontal layout on desktop */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links li a {
+  color: #ffcc00;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #ffa500; /* Lighter orange on hover */
+}
+
+/* MEDIA QUERY: Mobile View */
+@media (max-width: 768px) {
+  /* Show Hamburger Icon */
+  .menu-icon {
+    display: flex;
+  }
+
+  /* Hide nav links by default on mobile */
+  .nav-links {
+    position: absolute;
+    top: 60px; /* just below the nav container */
+    right: 0;
+    background: #0a0a0a;
+    flex-direction: column; /* Vertical layout */
+    width: 200px;
+    max-height: 0; /* Collapsed by default */
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    border-left: 2px solid #ffcc00;
+    z-index: 998;
+  }
+
+  /* When active class is toggled, menu expands */
+  .nav-links.active {
+    max-height: 300px; /* Enough to show all links */
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+    text-align: center;
+  }
+}
 
 /* Sticky Navigation - ensures nav stays above content */
 header {
