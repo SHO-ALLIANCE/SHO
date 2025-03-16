@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - SHO Alliance</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #111; color: white; text-align: center; }
+        .faq-container { width: 80%; margin: auto; text-align: left; }
+        .faq-item { border-bottom: 1px solid #444; padding: 10px; cursor: pointer; }
+        .faq-question { font-weight: bold; color: #f39c12; }
+        .faq-answer { display: none; padding: 10px; color: #ccc; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FAQ - SHO Alliance</h1>
+    </header>
+    <section class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">What is SHO Alliance?</div>
+            <div class="faq-answer">SHO Alliance is a community of skilled players across multiple games, including Hitwicket, Free Fire, BGMI, E-Football, and Clash of Clans.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Which alliances are in Hitwicket?</div>
+            <div class="faq-answer">VANGUARDS, ENFORCERS, OUTRIDERS, SENTINELS, PALADINS, CRUSADERS, REVENANTS, and INVINCIBLES.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Do we have alliances for other games?</div>
+            <div class="faq-answer">Yes! FIREHAWKS for Free Fire, WARHOUNDS for BGMI, GLADIATORS for E-Football, and MASTERS for Clash of Clans.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How can I join an alliance?</div>
+            <div class="faq-answer">To join, reach out to the respective game’s alliance leader or apply through our official Discord or recruitment page.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What are the benefits of joining an alliance?</div>
+            <div class="faq-answer">Members enjoy strategic gameplay, team coordination, alliance events, and access to a strong gaming community.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How often does SHO Alliance host tournaments?</div>
+            <div class="faq-answer">We host regular tournaments, PvP battles, and alliance championships across different games.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Can I be a part of multiple alliances?</div>
+            <div class="faq-answer">Yes, depending on the game, you can be a part of different SHO alliances within various games.</div>
+        </div>
+    </section>
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+  </html>
