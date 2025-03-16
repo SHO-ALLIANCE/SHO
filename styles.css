@@ -685,3 +685,27 @@ span, strong {
     white-space: normal !important;
     word-break: normal !important;
     }
+footer {
+  background: #0a0a0a;
+  padding: 20px 10px;
+  text-align: center;
+  color: #fff;
+  border-top: 2px solid #ffcc00;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.social-links a {
+  color: #ffcc00;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #ffa500;
+}
