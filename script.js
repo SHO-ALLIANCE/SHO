@@ -4,8 +4,8 @@ window.onload = function () {
         document.getElementById("loader").style.opacity = "0";
         setTimeout(() => {
             document.getElementById("loader").style.display = "none";
-        }, 250);
-    }, 500);
+        }, 125);
+    }, 250);
 };
 
 // Show loader when clicking links
@@ -16,7 +16,7 @@ document.querySelectorAll("a").forEach(link => {
             document.getElementById("loader").style.display = "flex";
             setTimeout(() => {
                 window.location.href = this.getAttribute("href");
-            }, 500);
+            }, 250);
         }
     });
 });
@@ -31,3 +31,11 @@ document.querySelectorAll(".nav-links a").forEach(link => {
         document.querySelector(".nav-links").classList.remove("active");
     });
 });
+function toggleSideMenu() {
+    const menu = document.getElementById("side-menu");
+    if (menu.style.width === "250px") {
+        menu.style.width = "0";
+    } else {
+        menu.style.width = "250px";
+    }
+            }
