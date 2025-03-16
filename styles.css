@@ -709,3 +709,49 @@ footer {
 .social-links a:hover {
   color: #ffa500;
 }
+.faq-answer {
+    display: none;
+    padding: 10px;
+    color: #ccc;
+    transition: max-height 0.3s ease-in-out;
+}
+.faq-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* FAQ Button Styling */
+.faq-button {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(255, 102, 0, 0.8);
+    transition: all 0.3s ease-in-out;
+    animation: pulse 1.5s infinite;
+}
+
+/* FAQ Icon */
+.faq-button::before {
+    content: '❓'; /* FAQ Icon */
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+/* Hover Effect */
+.faq-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px rgba(255, 204, 0, 1);
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% { box-shadow: 0px 0px 10px rgba(255, 102, 0, 0.8); }
+    50% { box-shadow: 0px 0px 20px rgba(255, 204, 0, 1); }
+    100% { box-shadow: 0px 0px 10px rgba(255, 102, 0, 0.8); }
+                                        }
