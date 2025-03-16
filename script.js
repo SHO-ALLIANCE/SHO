@@ -4,8 +4,8 @@ window.onload = function () {
         document.getElementById("loader").style.opacity = "0";
         setTimeout(() => {
             document.getElementById("loader").style.display = "none";
-        }, 500);
-    }, 1000);
+        }, 250);
+    }, 500);
 };
 
 // Show loader when clicking links
