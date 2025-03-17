@@ -1045,3 +1045,22 @@ header {
     background: #ffa500;
     transform: scale(1.1);
 }
+.dropdown-menu {
+    display: none;
+    background: rgba(0, 0, 0, 0.9);
+    list-style: none;
+    text-align: center;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+}
+
+.dropdown-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+    color: #ffcc00;
+}
