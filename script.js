@@ -43,3 +43,11 @@ function toggleDropdown() {
     const menu = document.getElementById("dropdown-menu");
     menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
+function toggleDropdown() {
+    const menu = document.getElementById("dropdown-menu");
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "block";
+    }
+}
