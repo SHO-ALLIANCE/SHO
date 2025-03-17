@@ -295,7 +295,7 @@ button:hover {
 
 /* Hero Section */
 #hero {
-    background: url("images/hero-bg.jpg") center/cover no-repeat;
+    background: url("images/sho-logo.png") center/cover no-repeat;
     height: 90vh;
     display: flex;
     align-items: center;
