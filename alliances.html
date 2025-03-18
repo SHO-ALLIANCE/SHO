@@ -6,23 +6,39 @@
     <title>SHO Alliances</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body><header>
+<body>
+    <header>
+  <!-- Navigation Container -->
+  <div class="nav-container">
+      <div class="logo hidden from-left">
+        <img src="images/sho-logo.png" alt="SHO Logo">
+      </div>
+    <!-- SHO Title (Optional) -->
+    <h1 class="sho-heading">ALLIANCES</h1>
+
+    <!-- Navbar -->
     
-    <button class="dropdown-btn" onclick="toggleDropdown()">☰ Menu</button>
-    <ul id="dropdown-menu" class="dropdown-menu">
-        
-            <li><a href="index.html">Home</a></li>
-            <li><a href="alliances.html" class="active">Alliances</a></li>
-            <li><a href="tournaments.html">Tournaments</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="recruitment.html">Recruitment</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <!-- Logo (Optional) -->
+      
+
+
+        <nav class="navbar">
+        <button class="side-menu-btn" onclick="toggleSideMenu()">☰ Menu</button>
+        <div id="side-menu" class="side-menu">
+            <a href="javascript:void(0)" class="close-btn" onclick="toggleSideMenu()">×</a>
+            <a href="index.html">Home</a>
+            <a href="alliances.html">Alliances</a>
+            <a href="tournaments.html">Tournaments</a>
+            <a href="news.html">News</a>
+            <a href="recruitment.html">Recruitment</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+      
     
-    <h1>Our Alliances</h1>
-    <p>Explore our elite alliances across multiple gaming platforms!</p>
-</header>
+  </div>
+    </header>
 
 <section class="alliances-grid">
     <!-- Hitwicket Alliances -->
