@@ -1064,3 +1064,30 @@ header {
 .dropdown-menu li a:hover {
     color: #ffcc00;
 }
+/* Hide elements initially */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px); /* Default: appears from bottom */
+    transition: all 0.8s ease-in-out;
+}
+
+/* Appear from the top */
+.from-top {
+    transform: translateY(-50px);
+}
+
+/* Appear from the left */
+.from-left {
+    transform: translateX(-50px);
+}
+
+/* Appear from the right */
+.from-right {
+    transform: translateX(50px);
+}
+
+/* When in view, make it visible */
+.show {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    }
