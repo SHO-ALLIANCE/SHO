@@ -51,3 +51,20 @@ function toggleDropdown() {
         menu.style.display = "block";
     }
 }
+function revealOnScroll() {
+    const elements = document.querySelectorAll('.hidden');
+    const windowHeight = window.innerHeight;
+
+    elements.forEach(element => {
+        const position = element.getBoundingClientRect().top;
+        if (position < windowHeight - 100) {
+            element.classList.add('show');
+        }
+    });
+}
+
+// Run on scroll
+window.addEventListener('scroll', revealOnScroll);
+
+// Run once on page load
+revealOnScroll();
