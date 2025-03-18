@@ -67,3 +67,18 @@ document.querySelectorAll(".nav-links a").forEach(link => {
         document.querySelector(".nav-links").classList.remove("active");
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    let elements = document.querySelectorAll('.recruitment-benefits, .recruitment-form');
+
+    function checkScroll() {
+        elements.forEach(el => {
+            let position = el.getBoundingClientRect().top;
+            if (position < window.innerHeight - 100) {
+                el.classList.add('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', checkScroll);
+    checkScroll();
+});
