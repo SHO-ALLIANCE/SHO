@@ -1,48 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHO News</title>
+    <title>SHO News & Updates</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <header>
-        <h1>SHO News & Updates</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="alliances.html">Alliances</a></li>
-                <li><a href="tournaments.html">Tournaments</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="recruitment.html">Recruitment</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section>
-        <h2>Latest Announcements</h2>
-        <article>
-            <h3>🚀 SHO Infinity War Begins!</h3>
-            <p>The highly anticipated SHO Infinity War event has officially started. Teams are set, strategies are in motion, and the battle for dominance begins!</p>
-        </article>
-
-        <article>
-            <h3>🔥 Alliance Championship Updates</h3>
-            <p>The qualifier rounds for the Alliance Championship have concluded. The top 60 alliances will now battle for the ultimate glory. Stay tuned for match schedules.</p>
-        </article>
-
-        <article>
-            <h3>🎉 SHO Paladins Joins the Battle</h3>
-            <p>The newest alliance, SHO Paladins, has been officially launched. This marks the sixth addition to the SHO universe!</p>
-        </article>
+        <div class="nav-container">
+            <div class="logo hidden from-left">
+                <img src="images/sho-logo.png" alt="SHO Logo">
+            </div>
+            <h1 class="sho-heading">Strategic Heroes Oracles</h1>
+            <nav class="navbar">
+                <button class="side-menu-btn" onclick="toggleSideMenu()">☰ Menu</button>
+                <div id="side-menu" class="side-menu">
+                    <a href="javascript:void(0)" class="close-btn" onclick="toggleSideMenu()">×</a>
+                    <a href="index.html">Home</a>
+                    <a href="alliances.html">Alliances</a>
+                    <a href="tournaments.html">Tournaments</a>
+                    <a href="news.html">News</a>
+                    <a href="recruitment.html">Recruitment</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header><main>
+    <section class="news-section">
+        <h2>Latest News & Updates</h2>
+        <div class="news-card">
+            <h3>🏆 SHO Reliable Tournament Begins!</h3>
+            <p>Our biggest tournament is live! Check out the fixtures and results.</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="news-card">
+            <h3>🔥 New Recruitment Drive</h3>
+            <p>We're looking for top players! Join SHO and be part of an elite squad.</p>
+            <a href="#">Apply Now</a>
+        </div>
+        <div class="news-card">
+            <h3>🚀 Youth Championship Update</h3>
+            <p>SHO Alpha has emerged as YC 18 champion.</p>
+            <a href="#">View achievements</a>
+        </div>
     </section>
 
-    <footer>
-        <p>&copy; 2025 SHO Alliance. All rights reserved.</p>
-    </footer>
+    <section class="old-news">
+        <h2>Past News & Announcements</h2>
+        <div class="news-list">
+            <!-- Old news content from uploaded file will be integrated here -->
+        </div>
+    </section>
+</main>
+
+<script>
+    function toggleSideMenu() {
+        var menu = document.getElementById("side-menu");
+        menu.classList.toggle("active");
+    }
+</script>
 
 </body>
-          </html>
+                </html>
