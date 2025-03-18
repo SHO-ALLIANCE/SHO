@@ -1241,3 +1241,25 @@ footer {
     border-radius: 10px;
     display: inline-block;
 }
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000; /* Ensure it is above all other elements */
+    display: none;
+}
+
+.side-menu a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.side-menu-btn {
+    position: relative;
+    z-index: 1100; /* Ensure button stays on top */
+}
