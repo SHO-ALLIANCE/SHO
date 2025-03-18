@@ -68,3 +68,23 @@ window.addEventListener('scroll', revealOnScroll);
 
 // Run once on page load
 revealOnScroll();
+// Fix: Allow normal navigation for menu links
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", function (event) {
+        const targetHref = this.getAttribute("href");
+        if (!targetHref.startsWith("#") && this.getAttribute("target") !== "_blank") {
+            event.preventDefault();
+            document.getElementById("loader").style.display = "flex";
+            setTimeout(() => {
+                window.location.href = targetHref;
+            }, 250);
+        }
+    });
+});
+
+// Fix: Close the mobile menu after clicking a link
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        document.querySelector(".nav-links").classList.remove("active");
+    });
+});
