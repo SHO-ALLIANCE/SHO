@@ -1248,7 +1248,7 @@ footer {
     width: 250px;
     height: 100%;
     background: rgba(0, 0, 0, 0.9);
-    z-index: 1000; /* Ensure it is above all other elements */
+    z-index: 9999; /* Ensure it is above all other elements */
     display: none;
 }
 
@@ -1261,5 +1261,5 @@ footer {
 
 .side-menu-btn {
     position: relative;
-    z-index: 1100; /* Ensure button stays on top */
+    z-index: 10000; /* Ensure button stays on top */
 }
