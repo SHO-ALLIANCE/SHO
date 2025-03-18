@@ -13,7 +13,7 @@
     <header>
   <!-- Navigation Container -->
   <div class="nav-container">
-      <div class="logo" class="hidden from-left">
+      <div class="logo" hidden from-left">
         <img src="images/sho-logo.png" alt="SHO Logo">
       </div>
     <!-- SHO Title (Optional) -->
@@ -25,7 +25,7 @@
       
 
 
-        <nav class="navbar" class="hidden from-right">
+        <nav class="navbar" hidden from-right">
         <button class="side-menu-btn" onclick="toggleSideMenu()">☰ Menu</button>
         <div id="side-menu" class="side-menu">
             <a href="javascript:void(0)" class="close-btn" onclick="toggleSideMenu()">×</a>
@@ -79,7 +79,7 @@
 </section>
      
     <section id="hero">
-    <div class="hero-content">
+    <div class="hero-content hidden from-top">
         <h1>Welcome to <span>Strategic Heroes Oracles</span></h1>
         <p>The Ultimate Gaming Alliance – Dominate, Compete & Rise!</p>
         <a href="alliances.html" class="btn">Explore Alliances</a>
@@ -88,23 +88,23 @@
         
     </section>
 
-    <div class="faq-button-container">
+    <div class="faq-button-container hidden from-bottom">
     <a href="faq.html" class="faq-button">
         ❓ Got Questions? Visit Our FAQ
     </a>
     </div>
 <section class="youtube-videos">
-    <h2>Our Popular YouTube Videos</h2>
+    <h2 class="hidden from-top">Our Popular YouTube Videos</h2>
     
     <div class="video-container">
         <!-- Replace VIDEO_ID with your actual YouTube video IDs -->
-        <iframe src="https://www.youtube.com/embed/8XWqj03tnYY" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/7eFudj8yWNQ" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/tPc3xHIah7E" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/8XWqj03tnYY" allowfullscreen class="hidden from-left"></iframe>
+        <iframe src="https://www.youtube.com/embed/7eFudj8yWNQ" allowfullscreen class="hidden from-right"></iframe>
+        <iframe src="https://www.youtube.com/embed/tPc3xHIah7E" allowfullscreen class="hidden from-left"></iframe>
     </div>
 
     <!-- "View More" Button -->
-    <div class="view-more-container">
+    <div class="view-more-container hidden from-bottom">
         <a href="https://youtube.com/@strategic-heroes-oracles?si=_fDABwj8WiSXJ0eV" target="_blank" class="view-more-btn">
             View More on YouTube
         </a>
