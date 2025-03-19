@@ -4,14 +4,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHO News & Updates</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #222;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .sho-heading {
+            font-size: 24px;
+            color: #fdd835;
+            text-transform: uppercase;
+        }
+        .news-section {
+            padding: 20px;
+            text-align: center;
+        }
+        .news-card {
+            background: linear-gradient(135deg, #ff8a00, #e52e71);
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 138, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        .news-card:hover {
+            transform: scale(1.05);
+        }
+        .news-card h3 {
+            color: #fff;
+            font-size: 20px;
+        }
+        .news-card p {
+            color: #f1f1f1;
+        }
+        .news-card a {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #ffcc00;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .old-news {
+            padding: 20px;
+            text-align: center;
+        }
+        .old-news h2 {
+            color: #ffcc00;
+        }
+        .news-list {
+            max-width: 800px;
+            margin: auto;
+            background: #222;
+            padding: 15px;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="nav-container">
-            <div class="logo hidden from-left">
-                <img src="images/sho-logo.png" alt="SHO Logo">
-            </div>
-            <h1 class="sho-heading">Strategic Heroes Oracles</h1>
+            <h1 class="sho-heading">||SHO|| NEWS</h1>
             <nav class="navbar">
                 <button class="side-menu-btn" onclick="toggleSideMenu()">☰ Menu</button>
                 <div id="side-menu" class="side-menu">
@@ -26,40 +93,39 @@
                 </div>
             </nav>
         </div>
-    </header><main>
-    <section class="news-section">
-        <h2>Latest News & Updates</h2>
-        <div class="news-card">
-            <h3>🏆 SHO Reliable Tournament Begins!</h3>
-            <p>Our biggest tournament is live! Check out the fixtures and results.</p>
-            <a href="#">Read More</a>
-        </div>
-        <div class="news-card">
-            <h3>🔥 New Recruitment Drive</h3>
-            <p>We're looking for top players! Join SHO and be part of an elite squad.</p>
-            <a href="#">Apply Now</a>
-        </div>
-        <div class="news-card">
-            <h3>🚀 Youth Championship Update</h3>
-            <p>SHO Alpha has emerged as YC 18 champion.</p>
-            <a href="#">View achievements</a>
-        </div>
-    </section>
-
-    <section class="old-news">
-        <h2>Past News & Announcements</h2>
-        <div class="news-list">
-            <!-- Old news content from uploaded file will be integrated here -->
-        </div>
-    </section>
-</main>
-
-<script>
-    function toggleSideMenu() {
-        var menu = document.getElementById("side-menu");
-        menu.classList.toggle("active");
-    }
-</script>
-
+    </header>
+    <main>
+        <section class="news-section">
+            <h2>🔥 Latest News & Updates</h2>
+            <div class="news-card">
+                <h3>🏆 SHO Reliable Tournament Begins!</h3>
+                <p>Our biggest tournament is live! Check out the fixtures and results.</p>
+                <a href="#">Read More</a>
+            </div>
+            <div class="news-card">
+                <h3>🔥 New Recruitment Drive</h3>
+                <p>We're looking for top players! Join SHO and be part of an elite squad.</p>
+                <a href="#">Apply Now</a>
+            </div>
+            <div class="news-card">
+                <h3>🚀 Youth Championship Update</h3>
+                <p>SHO Alpha has emerged as YC 18 champion.</p>
+                <a href="#">View achievements</a>
+            </div>
+        </section>
+        <section class="old-news">
+            <h2>📰 Past News & Announcements</h2>
+            <div class="news-list">
+                <!-- Old news content can be added here -->
+            </div>
+        </section>
+    </main>
+    <script>
+        function toggleSideMenu() {
+            var menu = document.getElementById("side-menu");
+            menu.classList.toggle("active");
+        }
+    </script>
+    <script src="script.js" defer></script>
 </body>
-                </html>
+    </html>
