@@ -1,11 +1,18 @@
 <!DOCTYPE html><html lang="en">
 <head>
-    <script src="script.js" defer></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHO Alliances</title>
-    <link rel="stylesheet" href="styles.css">
-      <style>
+  <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHO Alliances</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      AOS.init();
+    });
+  </script>
+  <style>
     body {
       background-color: #0e0e0e;
       color: #fff;
@@ -30,13 +37,29 @@
       color: #ccc;
       margin-bottom: 30px;
     }
-    .section {
-      margin-top: 40px;
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
     }
-    .section h2 {
-      color: #ffcc00;
-      font-size: 1.8rem;
-      margin-bottom: 15px;
+    .controls input[type="text"],
+    .controls button {
+      padding: 8px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    .controls input[type="text"] {
+      flex-grow: 1;
+      max-width: 300px;
+    }
+    .controls button {
+      background: #ffd700;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
     }
     .grid {
       display: grid;
@@ -48,11 +71,13 @@
       border-radius: 10px;
       padding: 20px;
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      cursor: pointer;
     }
     .card:hover {
-      transform: scale(1.05);
+      transform: scale(1.07);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     }
     .card img {
       width: 80px;
@@ -68,98 +93,141 @@
       font-size: 14px;
       color: #ccc;
     }
-    .card a {
-      display: inline-block;
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: #222;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 500px;
+      color: #fff;
+      text-align: center;
+    }
+    .modal-content h3 {
+      color: #ffd700;
+    }
+    .modal-content p {
+      color: #ccc;
       margin-top: 10px;
+    }
+    .modal-content button {
+      margin-top: 20px;
       padding: 8px 15px;
       background-color: #ffd700;
       color: #000;
-      border-radius: 5px;
-      text-decoration: none;
       font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
-                                    </style>
+  </style>
 </head>
 <body>
-    <header>
-  <!-- Navigation Container -->
-  <div class="nav-container">
+  <header>
+    <div class="nav-container">
       <div class="logo hidden from-left">
         <img src="images/sho-logo.png" alt="SHO Logo">
       </div>
-    <!-- SHO Title (Optional) -->
-    <h1 class="sho-heading">||SHO|| ALLIANCES</h1>
-
-    <!-- Navbar -->
-    
-      <!-- Logo (Optional) -->
-      
-
-
-        <nav class="navbar">
+      <h1 class="sho-heading">||SHO|| ALLIANCES</h1>
+      <nav class="navbar">
         <button class="side-menu-btn" onclick="toggleSideMenu()">☰ Menu</button>
         <div id="side-menu" class="side-menu">
-            <a href="javascript:void(0)" class="close-btn" onclick="toggleSideMenu()">×</a>
-            <a href="index.html">Home</a>
-            <a href="alliances.html">Alliances</a>
-            <a href="tournaments.html">Tournaments</a>
-            <a href="news.html">News</a>
-            <a href="recruitment.html">Recruitment</a>
-            <a href="faq.html">FAQ</a>
-            <a href="contact.html">Contact</a>
+          <a href="javascript:void(0)" class="close-btn" onclick="toggleSideMenu()">×</a>
+          <a href="index.html">Home</a>
+          <a href="alliances.html">Alliances</a>
+          <a href="tournaments.html">Tournaments</a>
+          <a href="news.html">News</a>
+          <a href="recruitment.html">Recruitment</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
         </div>
-    </nav>
-      
-    
-  </div>
-    </header>
-
-  <div class="container">
+      </nav>
+    </div>
+  </header>  <div class="container">
     <div class="title">Explore Our Alliances</div>
     <div class="subtitle">Categorized by Game Type</div>
-
-    <div class="section">
-      <h2>Hitwicket Alliances</h2>
-      <div class="grid">
-        <div class="card"><img src="images/vanguards.png" alt="Vanguards"><h3>VANGUARDS</h3><p>Leader: Aryan<br>Co-Leader: Krish</p><a href="recruitment.html">Join Now</a></div>
-        <div class="card"><img src="images/enforcers.png" alt="Enforcers"><h3>ENFORCERS</h3><p>Leader: Neha<br>Co-Leader: Raj</p><a href="recruitment.html">Join Now</a></div>
-        <div class="card"><img src="images/outriders.png" alt="Outriders"><h3>OUTRIDERS</h3><p>Leader: Simran<br>Co-Leader: Ayaan</p><a href="recruitment.html">Join Now</a></div>
-        <div class="card"><img src="images/sentinels.png" alt="Sentinels"><h3>SENTINELS</h3><p>Leader: Riya<br>Co-Leader: Veer</p><a href="recruitment.html">Join Now</a></div>
-        <div class="card"><img src="images/paladins.png" alt="Paladins"><h3>PALADINS</h3><p>Leader: Tanvi<br>Co-Leader: Shaan</p><a href="recruitment.html">Join Now</a></div>
-        <div class="card"><img src="images/crusaders.png" alt="Crusaders"><h3>CRUSADERS</h3><p>Leader: Aman<br>Co-Leader: Zoya</p><a href="recruitment.html">Join Now</a></div>
-        <div class="card"><img src="images/revenants.png" alt="Revenants"><h3>REVENANTS</h3><p>Leader: Dev<br>Co-Leader: Isha</p><a href="recruitment.html">Join Now</a></div>
-        <div class="card"><img src="images/invincibles.png" alt="Invincibles"><h3>INVINCIBLES</h3><p>Leader: Kabir<br>Co-Leader: Sana</p><a href="recruitment.html">Join Now</a></div>
-      </div>
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search alliances..." onkeyup="searchAlliances()">
+      <button onclick="filterAll('all')">All</button>
+      <button onclick="filterAll('hitwicket')">Hitwicket</button>
+      <button onclick="filterAll('freefire')">Free Fire</button>
+      <button onclick="filterAll('bgmi')">BGMI</button>
+      <button onclick="filterAll('efootball')">E-Football</button>
+      <button onclick="filterAll('coc')">Clash of Clans</button>
     </div>
-
-    <div class="section">
-      <h2>Free Fire Alliance</h2>
-      <div class="grid">
-        <div class="card"><img src="images/firehawks.png" alt="Firehawks"><h3>FIREHAWKS</h3><p>Leader: Harsh<br>Co-Leader: Diya</p><a href="recruitment.html">Join Now</a></div>
-      </div>
+    <div class="grid" id="allianceGrid"></div>
+  </div>  <div class="modal" id="infoModal">
+    <div class="modal-content">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <button onclick="closeModal()">Close</button>
     </div>
+  </div>  <script>
+    const alliances = [
+      { name: "VANGUARDS", category: "hitwicket", leader: "Aryan", co: "Krish", motto: "Lead with honor." },
+      { name: "ENFORCERS", category: "hitwicket", leader: "Neha", co: "Raj", motto: "Discipline wins wars." },
+      { name: "OUTRIDERS", category: "hitwicket", leader: "Simran", co: "Ayaan", motto: "Ride to victory." },
+      { name: "SENTINELS", category: "hitwicket", leader: "Riya", co: "Veer", motto: "Guardians of strategy." },
+      { name: "PALADINS", category: "hitwicket", leader: "Tanvi", co: "Shaan", motto: "Pure power." },
+      { name: "CRUSADERS", category: "hitwicket", leader: "Aman", co: "Zoya", motto: "Crusade of champions." },
+      { name: "REVENANTS", category: "hitwicket", leader: "Dev", co: "Isha", motto: "Back from defeat." },
+      { name: "INVINCIBLES", category: "hitwicket", leader: "Kabir", co: "Sana", motto: "Unbreakable spirit." },
+      { name: "FIREHAWKS", category: "freefire", leader: "Harsh", co: "Diya", motto: "Born from flames." },
+      { name: "WARHOUNDS", category: "bgmi", leader: "Aarav", co: "Nia", motto: "Battle and bark." },
+      { name: "GLADIATORS", category: "efootball", leader: "Om", co: "Priya", motto: "Game of goals." },
+      { name: "MASTERS", category: "coc", leader: "Raghav", co: "Anaya", motto: "Clash with class." },
+    ];
 
-    <div class="section">
-      <h2>BGMI Alliance</h2>
-      <div class="grid">
-        <div class="card"><img src="images/warhounds.png" alt="Warhounds"><h3>WARHOUNDS</h3><p>Leader: Aarav<br>Co-Leader: Nia</p><a href="recruitment.html">Join Now</a></div>
-      </div>
-    </div>
+    function renderCards(filter = "all") {
+      const grid = document.getElementById("allianceGrid");
+      grid.innerHTML = "";
+      alliances.filter(a => filter === "all" || a.category === filter)
+        .forEach(all => {
+          const div = document.createElement("div");
+          div.className = "card";
+          div.setAttribute("data-aos", "fade-up");
+          div.setAttribute("onclick", `showModal('${all.name}', '${all.motto}', '${all.leader}', '${all.co}')`);
+          div.innerHTML = `
+            <img src="images/${all.name.toLowerCase()}.png" alt="${all.name}" />
+            <h3>${all.name}</h3>
+            <p>Leader: ${all.leader}<br>Co-Leader: ${all.co}</p>
+          `;
+          grid.appendChild(div);
+        });
+    }
 
-    <div class="section">
-      <h2>E-Football Alliance</h2>
-      <div class="grid">
-        <div class="card"><img src="images/gladiators.png" alt="Gladiators"><h3>GLADIATORS</h3><p>Leader: Om<br>Co-Leader: Priya</p><a href="recruitment.html">Join Now</a></div>
-      </div>
-    </div>
+    function filterAll(category) {
+      renderCards(category);
+    }
 
-    <div class="section">
-      <h2>Clash of Clans Alliance</h2>
-      <div class="grid">
-        <div class="card"><img src="images/masters.png" alt="Masters"><h3>MASTERS</h3><p>Leader: Raghav<br>Co-Leader: Anaya</p><a href="recruitment.html">Join Now</a></div>
-      </div>
-    </div>
-  </div>
-<script src="script.js" defer></script>
-</body>
-    </html>
+    function searchAlliances() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".card");
+      cards.forEach(card => {
+        card.style.display = card.innerText.toLowerCase().includes(input) ? "block" : "none";
+      });
+    }
+
+    function showModal(name, motto, leader, co) {
+      document.getElementById("modalTitle").innerText = name;
+      document.getElementById("modalDesc").innerHTML = `Motto: ${motto}<br>Leader: ${leader}<br>Co-Leader: ${co}`;
+      document.getElementById("infoModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("infoModal").style.display = "none";
+    }
+
+    renderCards();
+  </script></body>
+</html>
