@@ -5,6 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHO Alliances</title>
     <link rel="stylesheet" href="styles.css">
+      <style>
+    body {
+      background-color: #0e0e0e;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .title {
+      text-align: center;
+      color: #fdd835;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+    .section {
+      margin-top: 40px;
+    }
+    .section h2 {
+      color: #ffcc00;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .card h3 {
+      color: #ffd700;
+      margin: 10px 0 5px;
+    }
+    .card p {
+      font-size: 14px;
+      color: #ccc;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #ffd700;
+      color: #000;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+                                    </style>
 </head>
 <body>
     <header>
@@ -40,26 +114,52 @@
   </div>
     </header>
 
-<section class="alliances-grid">
-    <!-- Hitwicket Alliances -->
-    <h2 class="game-category">🔥 Hitwicket Alliances</h2>
-    
-    <div class="alliance-card hitwicket"><img src="images/vanguards.png" alt="Vanguards"><h2>Vanguards</h2><p>Leading the charge in strategy and dominance.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
-    <div class="alliance-card hitwicket"><img src="images/enforcers.png" alt="Enforcers"><h2>Enforcers</h2><p>Enforcing victory with unparalleled skill.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
-    <div class="alliance-card hitwicket"><img src="images/outriders.png" alt="Outriders"><h2>Outriders</h2><p>Swift and strategic in every battle.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
-    <div class="alliance-card hitwicket"><img src="images/sentinels.png" alt="Sentinels"><h2>Sentinels</h2><p>Guardians of our legacy, unshakable and strong.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
-    <div class="alliance-card hitwicket"><img src="images/paladins.png" alt="Paladins"><h2>Paladins</h2><p>Chivalrous warriors fighting for victory.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
-    <div class="alliance-card hitwicket"><img src="images/crusaders.png" alt="Crusaders"><h2>Crusaders</h2><p>Fearless in battle, relentless in pursuit.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
-    <div class="alliance-card hitwicket"><img src="images/revenants.png" alt="Revenants"><h2>Revenants</h2><p>Unstoppable forces, rising from every defeat.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
-    <div class="alliance-card hitwicket"><img src="images/invincibles.png" alt="Invincibles"><h2>Invincibles</h2><p>Unbeatable and unmatched in skill.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
+  <div class="container">
+    <div class="title">Explore Our Alliances</div>
+    <div class="subtitle">Categorized by Game Type</div>
 
-    <h2 class="game-category">🔥 Other Game Alliances</h2>
-    
-    <div class="alliance-card freefire"><img src="images/firehawks.png" alt="Firehawks"><h2>Firehawks</h2><p>Blazing through battles in Free Fire.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
-    <div class="alliance-card bgmi"><img src="images/warhounds.png" alt="Warhounds"><h2>Warhounds</h2><p>Fearless hunters dominating BGMI.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
-    <div class="alliance-card efootball"><img src="images/gladiators.png" alt="Gladiators"><h2>Gladiators</h2><p>Fierce warriors of the football arena.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
-    <div class="alliance-card coc"><img src="images/masters.png" alt="Masters"><h2>Masters</h2><p>Commanders of Clash of Clans, ruling the game.</p><a href="recruitment.html" class="join-btn">Join Now</a></div>
-</section>
+    <div class="section">
+      <h2>Hitwicket Alliances</h2>
+      <div class="grid">
+        <div class="card"><img src="images/vanguards.png" alt="Vanguards"><h3>VANGUARDS</h3><p>Leader: Aryan<br>Co-Leader: Krish</p><a href="recruitment.html">Join Now</a></div>
+        <div class="card"><img src="images/enforcers.png" alt="Enforcers"><h3>ENFORCERS</h3><p>Leader: Neha<br>Co-Leader: Raj</p><a href="recruitment.html">Join Now</a></div>
+        <div class="card"><img src="images/outriders.png" alt="Outriders"><h3>OUTRIDERS</h3><p>Leader: Simran<br>Co-Leader: Ayaan</p><a href="recruitment.html">Join Now</a></div>
+        <div class="card"><img src="images/sentinels.png" alt="Sentinels"><h3>SENTINELS</h3><p>Leader: Riya<br>Co-Leader: Veer</p><a href="recruitment.html">Join Now</a></div>
+        <div class="card"><img src="images/paladins.png" alt="Paladins"><h3>PALADINS</h3><p>Leader: Tanvi<br>Co-Leader: Shaan</p><a href="recruitment.html">Join Now</a></div>
+        <div class="card"><img src="images/crusaders.png" alt="Crusaders"><h3>CRUSADERS</h3><p>Leader: Aman<br>Co-Leader: Zoya</p><a href="recruitment.html">Join Now</a></div>
+        <div class="card"><img src="images/revenants.png" alt="Revenants"><h3>REVENANTS</h3><p>Leader: Dev<br>Co-Leader: Isha</p><a href="recruitment.html">Join Now</a></div>
+        <div class="card"><img src="images/invincibles.png" alt="Invincibles"><h3>INVINCIBLES</h3><p>Leader: Kabir<br>Co-Leader: Sana</p><a href="recruitment.html">Join Now</a></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Free Fire Alliance</h2>
+      <div class="grid">
+        <div class="card"><img src="images/firehawks.png" alt="Firehawks"><h3>FIREHAWKS</h3><p>Leader: Harsh<br>Co-Leader: Diya</p><a href="recruitment.html">Join Now</a></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>BGMI Alliance</h2>
+      <div class="grid">
+        <div class="card"><img src="images/warhounds.png" alt="Warhounds"><h3>WARHOUNDS</h3><p>Leader: Aarav<br>Co-Leader: Nia</p><a href="recruitment.html">Join Now</a></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>E-Football Alliance</h2>
+      <div class="grid">
+        <div class="card"><img src="images/gladiators.png" alt="Gladiators"><h3>GLADIATORS</h3><p>Leader: Om<br>Co-Leader: Priya</p><a href="recruitment.html">Join Now</a></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Clash of Clans Alliance</h2>
+      <div class="grid">
+        <div class="card"><img src="images/masters.png" alt="Masters"><h3>MASTERS</h3><p>Leader: Raghav<br>Co-Leader: Anaya</p><a href="recruitment.html">Join Now</a></div>
+      </div>
+    </div>
+  </div>
 <script src="script.js" defer></script>
 </body>
     </html>
