@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Match Scoring - SHO</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e0e0e;
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #ffd700;
+    }
+    .panel, .score {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    select, input, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background: #ffd700;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .score-board, .log {
+      margin-top: 15px;
+      background: #2a2a2a;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .score-board h3 {
+      margin: 0;
+      color: #ffd700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Live Scoring Panel</h1>
+  <div class="panel">
+    <label>Match:</label>
+    <input type="text" id="matchName" placeholder="Match Name">
+    <label>Striker:</label>
+    <input type="text" id="striker" placeholder="Striker Name">
+    <label>Non-Striker:</label>
+    <input type="text" id="nonStriker" placeholder="Non-Striker Name">
+    <label>Bowler:</label>
+    <input type="text" id="bowler" placeholder="Bowler Name">
+    <button onclick="setPlayers()">Set Players</button>
+  </div>  <div class="score">
+    <div class="grid" id="runButtons"></div>
+    <div class="grid" id="extraButtons"></div>
+    <div class="grid" id="wicketButtons"></div>
+    <div class="grid" id="miscButtons"></div><div class="score-board">
+  <h3 id="liveScore">Runs: 0 | Wickets: 0 | Overs: 0.0</h3>
+  <p id="batsmanStats"></p>
+  <p id="bowlerStats"></p>
+</div>
+
+<div class="log" id="commentaryLog">
+  <h3>Commentary</h3>
+  <ul id="logList"></ul>
+</div>
+<button onclick="downloadScorecard()">Download Scorecard</button>
+
+  </div>  <script>
+    let score = 0, wickets = 0, balls = 0;
+    let striker = '', nonStriker = '', bowler = '';
+    let batsmanStats = {}, bowlerStats = {};
+    const log = [];
+
+    function setPlayers() {
+      striker = document.getElementById('striker').value;
+      nonStriker = document.getElementById('nonStriker').value;
+      bowler = document.getElementById('bowler').value;
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      const overs = Math.floor(balls / 6) + "." + (balls % 6);
+      document.getElementById('liveScore').innerText = `Runs: ${score} | Wickets: ${wickets} | Overs: ${overs}`;
+      document.getElementById('batsmanStats').innerText = `${striker}: ${batsmanStats[striker] || 0} runs`;
+      document.getElementById('bowlerStats').innerText = `${bowler}: ${bowlerStats[bowler] || 0} runs conceded`;
+
+      const logList = document.getElementById('logList');
+      logList.innerHTML = log.map(item => `<li>${item}</li>`).join('');
+    }
+
+    function addBall(run, type = "run") {
+      if (!striker || !bowler) return alert("Set striker and bowler first.");
+
+      if (type === 'run') {
+        score += run;
+        balls++;
+        batsmanStats[striker] = (batsmanStats[striker] || 0) + run;
+        bowlerStats[bowler] = (bowlerStats[bowler] || 0) + run;
+        log.unshift(`${striker} scores ${run} run(s)`);
+      } else if (type === 'extra') {
+        score += run;
+        bowlerStats[bowler] = (bowlerStats[bowler] || 0) + run;
+        log.unshift(`${type.toUpperCase()} +${run} runs`);
+      } else if (type === 'wicket') {
+        wickets++;
+        balls++;
+        log.unshift(`${type} - ${striker} is out!`);
+      }
+      updateDisplay();
+    }
+
+    function endOver() {
+      balls += (6 - balls % 6);
+      log.unshift(`End of Over. Total: ${score}/${wickets}`);
+      updateDisplay();
+    }
+
+    function undo() {
+      if (log.length > 0) {
+        log.shift();
+      }
+      updateDisplay();
+    }
+
+    function downloadScorecard() {
+      const data = {
+        match: document.getElementById('matchName').value,
+        score,
+        wickets,
+        balls,
+        striker,
+        nonStriker,
+        bowler,
+        batsmanStats,
+        bowlerStats,
+        log
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${data.match.replace(/\s+/g, '_')}_scorecard.json`;
+      link.click();
+    }
+
+    const runButtons = document.getElementById('runButtons');
+    for (let i = -12; i <= 12; i++) {
+      if (i !== 5) {
+        const btn = document.createElement('button');
+        btn.innerText = i;
+        btn.onclick = () => addBall(i);
+        runButtons.appendChild(btn);
+      }
+    }
+
+    const extraTypes = ['Wide', 'No Ball', 'Bye', 'Leg Bye'];
+    const extraButtons = document.getElementById('extraButtons');
+    extraTypes.forEach(type => {
+      const btn = document.createElement('button');
+      btn.innerText = type;
+      btn.onclick = () => addBall(1, 'extra');
+      extraButtons.appendChild(btn);
+    });
+
+    const wicketTypes = ['Bowled', 'Caught', 'Run Out', 'LBW', 'Hit Wicket'];
+    const wicketButtons = document.getElementById('wicketButtons');
+    wicketTypes.forEach(type => {
+      const btn = document.createElement('button');
+      btn.innerText = type;
+      btn.onclick = () => addBall(0, 'wicket');
+      wicketButtons.appendChild(btn);
+    });
+
+    const miscButtons = document.getElementById('miscButtons');
+    ['Undo', 'End Over'].forEach(action => {
+      const btn = document.createElement('button');
+      btn.innerText = action;
+      btn.onclick = () => {
+        if (action === 'Undo') undo();
+        else if (action === 'End Over') endOver();
+      };
+      miscButtons.appendChild(btn);
+    });
+
+    updateDisplay();
+  </script></body>
+</html>
