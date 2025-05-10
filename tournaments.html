@@ -1,58 +1,212 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHO Tournaments</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHO Tournament Hub</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e0e0e;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero h1 {
+      color: #ffd700;
+      font-size: 2.5rem;
+    }
+    .hero p {
+      color: #ccc;
+      font-size: 1.1rem;
+    }
+    .filters, .game-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .filters button, .game-filters button {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .filters button.active,
+    .game-filters button.active {
+      background: #ffd700;
+      color: black;
+    }
+    .tournament-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+      border: 2px solid transparent;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+    .card:hover {
+      border-color: #ffd700;
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+    }
+    .card h3 {
+      color: #ffd700;
+      margin-top: 0;
+    }
+    .card p {
+      color: #ccc;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .badge {
+      display: inline-block;
+      background: green;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin-top: 8px;
+    }
+    .badge.completed { background: crimson; }
+    .badge.upcoming { background: orange; }
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #ffd700;
+      color: black;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-
     <header>
-        <h1>SHO Tournaments</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="alliances.html">Alliances</a></li>
-                <li><a href="tournaments.html">Tournaments</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="recruitment.html">Recruitment</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <div class="nav-container">
+      <div class="logo hidden from-left">
+        <img src="images/sho-logo.png" alt="SHO Logo">
+      </div>
+      <h1 class="sho-heading">||SHO|| TOURNAMENTS</h1>
+      <nav class="navbar">
+        <button class="side-menu-btn" onclick="toggleSideMenu()">☰ Menu</button>
+        <div id="side-menu" class="side-menu">
+          <a href="javascript:void(0)" class="close-btn" onclick="toggleSideMenu()">×</a>
+          <a href="index.html">Home</a>
+          <a href="alliances.html">Alliances</a>
+          <a href="tournaments.html">Tournaments</a>
+          <a href="news.html">News</a>
+          <a href="recruitment.html">Recruitment</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
     </header>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>AOS.init();</script>  <div class="container">
+    <div class="hero" data-aos="fade-down">
+      <h1>SHO Tournament Hub</h1>
+      <p>Explore all past and present SHO tournaments from all games and alliances.</p>
+    </div><div class="game-filters" data-aos="fade-up">
+  <button class="active" onclick="filterByGame('all')">All Games</button>
+  <button onclick="filterByGame('hitwicket')">Hitwicket</button>
+  <button onclick="filterByGame('freefire')">Free Fire</button>
+  <button onclick="filterByGame('bgmi')">BGMI</button>
+</div>
 
-    <section>
-        <h2>Ongoing & Upcoming Tournaments</h2>
-        <ul>
-            <li><strong>SHO Tournament 2.0</strong> – The biggest SHO event!</li>
-            <li><strong>Alliance Championship</strong> – Compete with the best alliances.</li>
-            <li><strong>SHO Infinity War</strong> – The ultimate battle of teams.</li>
-        </ul>
+<div class="filters" data-aos="fade-up">
+  <button class="active" onclick="filterByStatus('all')">All</button>
+  <button onclick="filterByStatus('ongoing')">Ongoing</button>
+  <button onclick="filterByStatus('upcoming')">Upcoming</button>
+  <button onclick="filterByStatus('completed')">Completed</button>
+</div>
 
-        <h2>Past Winners</h2>
-        <table border="1">
-            <tr>
-                <th>Tournament</th>
-                <th>Winner</th>
-                <th>Runner-up</th>
-            </tr>
-            <tr>
-                <td>SHO Tournament 1.0</td>
-                <td>SHO Enforcers</td>
-                <td>SHO Sentinels</td>
-            </tr>
-            <tr>
-                <td>Alliance Championship</td>
-                <td>SHO Outriders</td>
-                <td>SHO Paladins</td>
-            </tr>
-        </table>
-    </section>
+<div class="tournament-grid" id="tournamentGrid">
+  <div class="card" data-game="hitwicket" data-status="completed" data-aos="fade-up">
+    <h3>Internal Tournament</h3>
+    <p>Hitwicket | Format: 1v1 League<br>Teams: 6 Alliances</p>
+    <span class="badge completed">Completed</span>
+    <a href="#">View Fixtures</a>
+  </div>
 
-    <footer>
-        <p>&copy; 2025 SHO Alliance. All rights reserved.</p>
-    </footer>
+  <div class="card" data-game="hitwicket" data-status="completed" data-aos="fade-up">
+    <h3>Internal Tournament 2.0</h3>
+    <p>Hitwicket | Format: Knockout PvP<br>Teams: 8 Alliances</p>
+    <span class="badge completed">Completed</span>
+    <a href="#">View Results</a>
+  </div>
 
-</body>
-  </html>
+  <div class="card" data-game="hitwicket" data-status="ongoing" data-aos="fade-up">
+    <h3>SHO Reliance Tournament</h3>
+    <p>Hitwicket | Format: Alliance Draft<br>Teams: 10 Mixed Players</p>
+    <span class="badge">Ongoing</span>
+    <a href="#">Live Fixtures</a>
+  </div>
+
+  <div class="card" data-game="freefire" data-status="upcoming" data-aos="fade-up">
+    <h3>Fire Reign Invitational</h3>
+    <p>Free Fire | Format: Squad Clash<br>Teams: 4 Squads</p>
+    <span class="badge upcoming">Upcoming</span>
+    <a href="#">Coming Soon</a>
+  </div>
+
+  <div class="card" data-game="bgmi" data-status="completed" data-aos="fade-up">
+    <h3>Warzone Championship</h3>
+    <p>BGMI | Format: Kill Race<br>Teams: 6 Players</p>
+    <span class="badge completed">Completed</span>
+    <a href="#">See Highlights</a>
+  </div>
+</div>
+
+  </div>  <script>
+    function filterByStatus(status) {
+      document.querySelectorAll('.filters button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      filterCards();
+    }
+
+    function filterByGame(game) {
+      document.querySelectorAll('.game-filters button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      filterCards();
+    }
+
+    function filterCards() {
+      const status = document.querySelector('.filters button.active').getAttribute('onclick').split("('")[1].split("'")[0];
+      const game = document.querySelector('.game-filters button.active').getAttribute('onclick').split("('")[1].split("'")[0];
+      const allCards = document.querySelectorAll('.card');
+      allCards.forEach(card => {
+        const matchStatus = card.getAttribute('data-status');
+        const matchGame = card.getAttribute('data-game');
+        if ((status === 'all' || matchStatus === status) && (game === 'all' || matchGame === game)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script></body>
+                                   </html>
