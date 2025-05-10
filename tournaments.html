@@ -1,12 +1,10 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <script src="script.js" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SHO Tournament Hub</title>
-    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -102,11 +100,17 @@
       text-decoration: none;
       font-weight: bold;
     }
-      
+    iframe {
+      margin-top: 40px;
+      border: none;
+      width: 100%;
+      border-radius: 12px;
+      background: #1e1e1e;
+    }
   </style>
 </head>
 <body>
-    <header>
+  <header>
     <div class="nav-container">
       <div class="logo hidden from-left">
         <img src="images/sho-logo.png" alt="SHO Logo">
@@ -126,9 +130,7 @@
         </div>
       </nav>
     </div>
-    </header>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>AOS.init();</script>  <div class="container">
+  </header>  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>  <script>AOS.init();</script>  <div class="container">
     <div class="hero" data-aos="fade-down">
       <h1>SHO Tournament Hub</h1>
       <p>Explore all past and present SHO tournaments from all games and alliances.</p>
@@ -161,11 +163,18 @@
     <a href="#">View Results</a>
   </div>
 
-  <div class="card" data-game="hitwicket" data-status="ongoing" data-aos="fade-up">
+  <div class="card" data-game="hitwicket" data-status="completed" data-aos="fade-up">
     <h3>SHO Reliance Tournament</h3>
     <p>Hitwicket | Format: Alliance Draft<br>Teams: 10 Mixed Players</p>
+    <span class="badge completed">Completed</span>
+    <a href="#">Archived Stats</a>
+  </div>
+
+  <div class="card" data-game="hitwicket" data-status="ongoing" data-aos="fade-up">
+    <h3>Trial Tournament</h3>
+    <p>Hitwicket | Format: Test Mode<br>Teams: Experimental Groups</p>
     <span class="badge">Ongoing</span>
-    <a href="#">Live Fixtures</a>
+    <a href="#liveStats">Scroll to Stats</a>
   </div>
 
   <div class="card" data-game="freefire" data-status="upcoming" data-aos="fade-up">
@@ -182,6 +191,11 @@
     <a href="#">See Highlights</a>
   </div>
 </div>
+
+<section id="liveStats">
+  <h2 style="text-align:center; margin-top:50px; color:#ffd700;">Trial Tournament Stats & Leaderboard</h2>
+  <iframe src="leaderboard-dashboard.html" width="100%" height="1300px"></iframe>
+</section>
 
   </div>  <script>
     function filterByStatus(status) {
@@ -211,4 +225,4 @@
       });
     }
   </script></body>
-                                   </html>
+</html>
