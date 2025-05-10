@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fixture Manager - SHO</title>
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #ffd700;
+    }
+    .section {
+      max-width: 800px;
+      margin: auto;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #ccc;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 15px;
+      background-color: #ffd700;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .fixture-list {
+      margin-top: 20px;
+    }
+    .fixture-item {
+      background: #2a2a2a;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>SHO Fixture Manager</h1>  <div class="section">
+    <h3>Upload Tournament JSON</h3>
+    <input type="file" id="uploadJson" accept="application/json">
+  </div>  <div id="fixtureBuilder" class="section" style="display:none">
+    <h3>Create New Fixture</h3>
+    <label>Match Number</label>
+    <input type="text" id="matchNo"><label>Team 1</label>
+<select id="team1"></select>
+
+<label>Team 2</label>
+<select id="team2"></select>
+
+<label>Date</label>
+<input type="date" id="matchDate">
+
+<label>Time</label>
+<input type="time" id="matchTime">
+
+<label>Venue</label>
+<input type="text" id="venue">
+
+<button onclick="addFixture()">Add Fixture</button>
+
+  </div>  <div class="section fixture-list" id="fixtureList" style="display:none">
+    <h3>Fixtures</h3>
+    <div id="fixturesDisplay"></div>
+    <button onclick="downloadFixtures()">Download Fixtures JSON</button>
+  </div>  <script>
+    let teams = [];
+    let fixtures = [];
+
+    document.getElementById('uploadJson').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const data = JSON.parse(e.target.result);
+        teams = data.groups.map(g => g.team);
+        populateTeamDropdowns();
+        document.getElementById('fixtureBuilder').style.display = 'block';
+        document.getElementById('fixtureList').style.display = 'block';
+      }
+      reader.readAsText(file);
+    });
+
+    function populateTeamDropdowns() {
+      const t1 = document.getElementById('team1');
+      const t2 = document.getElementById('team2');
+      t1.innerHTML = "";
+      t2.innerHTML = "";
+      teams.forEach(team => {
+        t1.innerHTML += `<option value="${team}">${team}</option>`;
+        t2.innerHTML += `<option value="${team}">${team}</option>`;
+      });
+    }
+
+    function addFixture() {
+      const matchNo = document.getElementById('matchNo').value;
+      const team1 = document.getElementById('team1').value;
+      const team2 = document.getElementById('team2').value;
+      const date = document.getElementById('matchDate').value;
+      const time = document.getElementById('matchTime').value;
+      const venue = document.getElementById('venue').value;
+
+      if (team1 === team2) {
+        alert("Team 1 and Team 2 cannot be the same!");
+        return;
+      }
+
+      const match = { matchNo, team1, team2, date, time, venue };
+      fixtures.push(match);
+
+      const fixtureDiv = document.createElement('div');
+      fixtureDiv.className = 'fixture-item';
+      fixtureDiv.innerHTML = `Match ${matchNo}: ${team1} vs ${team2} on ${date} at ${time} @ ${venue}`;
+      document.getElementById('fixturesDisplay').appendChild(fixtureDiv);
+
+      document.getElementById('matchNo').value = "";
+      document.getElementById('matchDate').value = "";
+      document.getElementById('matchTime').value = "";
+      document.getElementById('venue').value = "";
+    }
+
+    function downloadFixtures() {
+      const blob = new Blob([JSON.stringify(fixtures, null, 2)], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "fixtures.json";
+      link.click();
+    }
+  </script></body>
+</html>
