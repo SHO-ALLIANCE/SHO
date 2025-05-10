@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stats Dashboard - SHO</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e0e0e;
+      color: #fff;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #ffd700;
+    }
+    .upload {
+      max-width: 600px;
+      margin: auto;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    input[type="file"] {
+      margin: 10px 0;
+    }
+    button {
+      padding: 8px 15px;
+      border: none;
+      background: #ffd700;
+      color: #000;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #333;
+      text-align: center;
+    }
+    th {
+      background-color: #ffd700;
+      color: #000;
+    }
+    .section {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>SHO Tournament Stats & Leaderboard</h1>  <div class="upload">
+    <h2>Upload Scorecard Files</h2>
+    <input type="file" id="jsonFiles" multiple accept="application/json">
+    <button onclick="processFiles()">Generate Stats</button>
+    <button onclick="downloadStats()">Download All Stats</button>
+  </div>  <div class="section" id="statsContainer"></div>  <script>
+    let playerStats = {};
+    let teamPoints = {};
+
+    function processFiles() {
+      const files = document.getElementById('jsonFiles').files;
+      if (!files.length) return alert("Upload at least one scorecard.");
+      playerStats = {};
+      teamPoints = {};
+      let loaded = 0;
+
+      [...files].forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const data = JSON.parse(e.target.result);
+          tallyStats(data);
+          tallyPoints(data);
+          loaded++;
+          if (loaded === files.length) renderStats();
+        };
+        reader.readAsText(file);
+      });
+    }
+
+    function tallyStats(data) {
+      const matchPlayers = [data.striker, data.nonStriker];
+      matchPlayers.forEach(player => {
+        if (!playerStats[player]) playerStats[player] = { runs: 0, balls: 0, matches: 0, wickets: 0, conceded: 0 };
+        playerStats[player].matches++;
+        playerStats[player].runs += data.batsmanStats[player] || 0;
+        playerStats[player].balls += 6;
+      });
+
+      if (!playerStats[data.bowler]) playerStats[data.bowler] = { runs: 0, balls: 0, matches: 0, wickets: 0, conceded: 0 };
+      playerStats[data.bowler].matches++;
+      playerStats[data.bowler].conceded += data.bowlerStats[data.bowler] || 0;
+      playerStats[data.bowler].balls += data.balls;
+      playerStats[data.bowler].wickets += 1; // assuming 1 wicket per bowler for simplification
+    }
+
+    function tallyPoints(data) {
+      if (!data.match || !data.match.includes("vs")) return;
+      const [team1, team2] = data.match.split("vs").map(t => t.trim());
+      const winner = data.winner;
+      const team1Score = data.team1Runs || 0;
+      const team2Score = data.team2Runs || 0;
+      const team1Overs = data.team1Overs || 1;
+      const team2Overs = data.team2Overs || 1;
+
+      if (!teamPoints[team1]) teamPoints[team1] = { played: 0, wins: 0, losses: 0, points: 0, runsFor: 0, oversFor: 0, runsAgainst: 0, oversAgainst: 0 };
+      if (!teamPoints[team2]) teamPoints[team2] = { played: 0, wins: 0, losses: 0, points: 0, runsFor: 0, oversFor: 0, runsAgainst: 0, oversAgainst: 0 };
+
+      teamPoints[team1].played++;
+      teamPoints[team2].played++;
+
+      teamPoints[team1].runsFor += team1Score;
+      teamPoints[team1].oversFor += team1Overs;
+      teamPoints[team1].runsAgainst += team2Score;
+      teamPoints[team1].oversAgainst += team2Overs;
+
+      teamPoints[team2].runsFor += team2Score;
+      teamPoints[team2].oversFor += team2Overs;
+      teamPoints[team2].runsAgainst += team1Score;
+      teamPoints[team2].oversAgainst += team1Overs;
+
+      if (winner === team1) {
+        teamPoints[team1].wins++;
+        teamPoints[team2].losses++;
+        teamPoints[team1].points += 2;
+      } else if (winner === team2) {
+        teamPoints[team2].wins++;
+        teamPoints[team1].losses++;
+        teamPoints[team2].points += 2;
+      }
+    }
+
+    function renderStats() {
+      let html = "";
+
+      html += `<h2>Points Table</h2><table><tr><th>Team</th><th>Played</th><th>Wins</th><th>Losses</th><th>Points</th><th>NRR</th></tr>`;
+      for (const [team, stat] of Object.entries(teamPoints)) {
+        const nrr = ((stat.runsFor / stat.oversFor) - (stat.runsAgainst / stat.oversAgainst)).toFixed(2);
+        html += `<tr><td>${team}</td><td>${stat.played}</td><td>${stat.wins}</td><td>${stat.losses}</td><td>${stat.points}</td><td>${nrr}</td></tr>`;
+      }
+      html += `</table>`;
+
+      const players = Object.keys(playerStats);
+
+      html += `<h2>Batting Leaderboard</h2><table><tr><th>Player</th><th>Runs</th><th>Matches</th><th>SR</th><th>Avg</th></tr>`;
+      players.forEach(p => {
+        const stat = playerStats[p];
+        if (stat.runs !== undefined) {
+          const sr = stat.balls ? ((stat.runs / stat.balls) * 100).toFixed(2) : '0.00';
+          const avg = stat.matches ? (stat.runs / stat.matches).toFixed(2) : '0.00';
+          html += `<tr><td>${p}</td><td>${stat.runs}</td><td>${stat.matches}</td><td>${sr}</td><td>${avg}</td></tr>`;
+        }
+      });
+      html += `</table>`;
+
+      html += `<div class="section"><h2>Bowling Leaderboard</h2><table><tr><th>Bowler</th><th>Runs Conceded</th><th>Wickets</th><th>Economy</th></tr>`;
+      players.forEach(p => {
+        const stat = playerStats[p];
+        if (stat.conceded !== undefined) {
+          const ov = stat.balls / 6;
+          const eco = ov ? (stat.conceded / ov).toFixed(2) : '0.00';
+          html += `<tr><td>${p}</td><td>${stat.conceded}</td><td>${stat.wickets}</td><td>${eco}</td></tr>`;
+        }
+      });
+      html += `</table></div>`;
+
+      html += `<div class="section"><h2>MVP Rankings</h2><table><tr><th>Player</th><th>Points</th><th>Runs</th><th>Wickets</th></tr>`;
+      const mvp = players.map(p => {
+        const s = playerStats[p];
+        return { name: p, runs: s.runs || 0, wickets: s.wickets || 0, points: (s.runs || 0) + (s.wickets * 25) };
+      }).sort((a, b) => b.points - a.points);
+      mvp.forEach(p => {
+        html += `<tr><td>${p.name}</td><td>${p.points}</td><td>${p.runs}</td><td>${p.wickets}</td></tr>`;
+      });
+      html += `</table></div>`;
+
+      document.getElementById('statsContainer').innerHTML = html;
+    }
+
+    function downloadStats() {
+      const blob = new Blob([JSON.stringify({ teamPoints, playerStats }, null, 2)], { type: 'application/json' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'sho_tournament_stats.json';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script></body>
+  </html>
