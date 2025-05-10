@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHO Strategy Zone</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e0e0e;
+      color: white;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #ffd700;
+    }
+    .game-selector {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .game-selector button {
+      background: #ffd700;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .game-selector button:hover {
+      background: #ffa500;
+    }
+    .strategy-section {
+      display: none;
+    }
+    .strategy-section.active {
+      display: block;
+    }
+    .tabs {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      justify-content: center;
+    }
+    .tabs button {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .tabs button.active,
+    .tabs button:hover {
+      background: #ffd700;
+      color: black;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    .card h3 {
+      color: #ffd700;
+    }
+    .card p {
+      color: #ccc;
+      font-size: 14px;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #ffd700;
+      color: black;
+      padding: 6px 12px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .card .yt-button {
+      margin-left: 10px;
+      background-color: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo hidden from-left">
+        <img src="images/sho-logo.png" alt="SHO Logo">
+      </div>
+      <h1 class="sho-heading">||SHO|| STRATEGY</h1>
+      <nav class="navbar">
+        <button class="side-menu-btn" onclick="toggleSideMenu()">☰ Menu</button>
+        <div id="side-menu" class="side-menu">
+          <a href="javascript:void(0)" class="close-btn" onclick="toggleSideMenu()">×</a>
+          <a href="index.html">Home</a>
+          <a href="alliances.html">Alliances</a>
+          <a href="tournaments.html">Tournaments</a>
+          <a href="news.html">News</a>
+          <a href="recruitment.html">Recruitment</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <div class="container">
+    <h1 data-aos="fade-down">||SHO|| Strategy Zone</h1>
+    <p style="text-align:center;color:#ccc;margin-bottom:30px;">Select your game to view tips, video guides, and breakdowns for PvP, League, and more!</p><div class="game-selector" data-aos="zoom-in">
+  <button onclick="showGame('hitwicket')">Hitwicket</button>
+  <button onclick="showGame('freefire')">Free Fire</button>
+  <button onclick="showGame('bgmi')">BGMI</button>
+  <button onclick="showGame('efootball')">E-Football</button>
+  <button onclick="showGame('coc')">Clash of Clans</button>
+</div>
+
+<!-- GAME SECTIONS -->
+<div class="strategy-section" id="hitwicket">
+  <h2 data-aos="fade">Hitwicket Strategies</h2>
+  <div class="tabs">
+    <button onclick="showTab(this, 'hw-pvp')" class="active">PvP</button>
+    <button onclick="showTab(this, 'hw-league')">League</button>
+    <button onclick="showTab(this, 'hw-ac')">Alliance Championship</button>
+    <button onclick="showTab(this, 'hw-beginner')">Beginner Tips</button>
+  </div>
+  <div class="cards" id="hw-pvp">
+    <div class="card" data-aos="fade-up">
+      <h3>No SA PvP Strategy</h3>
+      <p>How to win PvP without using any special abilities.</p>
+      <a href="#">Read More</a>
+      <a href="https://youtube.com/@strategic-hitwickets-oracles" class="yt-button">Watch Video</a>
+    </div>
+  </div>
+  <div class="cards" id="hw-league" style="display:none;"></div>
+  <div class="cards" id="hw-ac" style="display:none;"></div>
+  <div class="cards" id="hw-beginner" style="display:none;"></div>
+</div>
+
+<div class="strategy-section" id="freefire">
+  <h2 data-aos="fade">Free Fire Strategies</h2>
+  <div class="tabs">
+    <button onclick="showTab(this, 'ff-general')" class="active">General</button>
+    <button onclick="showTab(this, 'ff-ranked')">Ranked</button>
+  </div>
+  <div class="cards" id="ff-general">
+    <div class="card" data-aos="fade-up">
+      <h3>Best Landing Spots</h3>
+      <p>Top safe and loot-rich areas for ranked battles.</p>
+      <a href="#">Read More</a>
+      <a href="https://youtube.com/@strategic-hitwickets-oracles" class="yt-button">Watch Video</a>
+    </div>
+  </div>
+  <div class="cards" id="ff-ranked" style="display:none;"></div>
+</div>
+
+<div class="strategy-section" id="bgmi">
+  <h2 data-aos="fade">BGMI Strategies</h2>
+  <div class="tabs">
+    <button onclick="showTab(this, 'bgmi-squad')" class="active">Squad Rotation</button>
+  </div>
+  <div class="cards" id="bgmi-squad">
+    <div class="card" data-aos="fade-up">
+      <h3>Zone 3 Rotation Guide</h3>
+      <p>Tips for perfect positioning in mid to late game zones.</p>
+      <a href="#">Read More</a>
+      <a href="https://youtube.com/@strategic-hitwickets-oracles" class="yt-button">Watch Video</a>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-section" id="efootball">
+  <h2 data-aos="fade">E-Football Strategies</h2>
+  <div class="tabs">
+    <button onclick="showTab(this, 'ef-midfield')" class="active">Midfield Press</button>
+  </div>
+  <div class="cards" id="ef-midfield">
+    <div class="card" data-aos="fade-up">
+      <h3>Master the Midfield</h3>
+      <p>Control tempo and outplay opponents with strategic pressing.</p>
+      <a href="#">Read More</a>
+      <a href="https://youtube.com/@strategic-hitwickets-oracles" class="yt-button">Watch Video</a>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-section" id="coc">
+  <h2 data-aos="fade">Clash of Clans Strategies</h2>
+  <div class="tabs">
+    <button onclick="showTab(this, 'coc-th12')" class="active">TH12 War Base</button>
+  </div>
+  <div class="cards" id="coc-th12">
+    <div class="card" data-aos="fade-up">
+      <h3>Anti-3 Star Base</h3>
+      <p>Best layouts to survive high-level war attacks.</p>
+      <a href="#">Read More</a>
+      <a href="https://youtube.com/@strategic-hitwickets-oracles" class="yt-button">Watch Video</a>
+    </div>
+  </div>
+</div>
+
+  </div>  <script>
+    function showGame(gameId) {
+      document.querySelectorAll('.strategy-section').forEach(section => section.classList.remove('active'));
+      document.getElementById(gameId).classList.add('active');
+    }
+
+    function showTab(btn, tabId) {
+      const container = btn.closest('.strategy-section');
+      container.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      container.querySelectorAll('.cards').forEach(tab => tab.style.display = 'none');
+      container.querySelector('#' + tabId).style.display = 'grid';
+    }
+
+    showGame('hitwicket');
+  </script></body>
+  </html>
