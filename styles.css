@@ -1265,3 +1265,38 @@ transform:translateY(-5px);
 margin-bottom:10px;
 color:#ffd700;
 }
+.alliances-showcase{
+text-align:center;
+padding:50px 20px;
+}
+
+.logo-slider{
+overflow:hidden;
+position:relative;
+width:100%;
+}
+
+.logo-track{
+display:flex;
+gap:40px;
+animation:scrollLogos 20s linear infinite;
+}
+
+.logo-track img{
+height:80px;
+transition:transform 0.3s;
+}
+
+.logo-track img:hover{
+transform:scale(1.2);
+}
+
+@keyframes scrollLogos{
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-50%);
+}
+}
