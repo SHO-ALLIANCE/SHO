@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Player Profile</title>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Player Profile</h1>
+
+</header>
+
+<main>
+
+<div id="profile"></div>
+
+</main>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get("id");
+
+fetch("players.json")
+
+.then(res=>res.json())
+
+.then(players=>{
+
+const player = players.find(p=>p.id===id);
+
+document.getElementById("profile").innerHTML =
+
+`<h2>${player.name}</h2>
+<p><b>Alliance:</b> ${player.alliance}</p>
+<p><b>Legion:</b> ${player.legion}</p>
+<p><b>Role:</b> ${player.role}</p>
+<p><b>Power:</b> ${player.power}</p>`;
+
+});
+
+</script>
+
+</body>
+
+</html>
