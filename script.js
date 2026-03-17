@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('scroll', checkScroll);
     checkScroll();
 });
-const eventDate = new Date("April 20, 2026 18:00:00").getTime();
+const eventDate = new Date("May 15, 2026 12:00:00").getTime();
 
 const countdown = setInterval(function(){
 
