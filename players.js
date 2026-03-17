@@ -1,14 +1,14 @@
 let playersData = []
 
 fetch("players.json")
-
 .then(res => res.json())
-
 .then(players => {
 
 playersData = players
 
 displayPlayers(players)
+
+updateLeaderboard(players)
 
 })
 
@@ -37,6 +37,38 @@ table.innerHTML += `
 <td>${player.alliance}</td>
 <td>${player.legion}</td>
 <td>${player.role}</td>
+<td>${player.power}</td>
+</tr>
+
+`
+
+})
+
+}
+
+function updateLeaderboard(players){
+
+const rankingTable = document.getElementById("rankingTable")
+
+rankingTable.innerHTML = `
+
+<tr>
+<th>Rank</th>
+<th>Player</th>
+<th>Power</th>
+</tr>
+
+`
+
+const sorted = [...players].sort((a,b)=>b.power-a.power)
+
+sorted.forEach((player,i)=>{
+
+rankingTable.innerHTML += `
+
+<tr>
+<td>${i+1}</td>
+<td>${player.name}</td>
 <td>${player.power}</td>
 </tr>
 
