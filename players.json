@@ -1,0 +1,37 @@
+[
+{
+"id":"akash",
+"name":"AKASH",
+"alliance":"SHO Vanguards",
+"legion":"Alpha",
+"role":"Finisher",
+"power":9500
+},
+
+{
+"id":"sunny",
+"name":"Sunny",
+"alliance":"SHO Enforcers",
+"legion":"Titan",
+"role":"Opener",
+"power":9100
+},
+
+{
+"id":"morningstar",
+"name":"Morning Star",
+"alliance":"SHO Sentinels",
+"legion":"Phantom",
+"role":"All Rounder",
+"power":9200
+},
+
+{
+"id":"hari",
+"name":"Hari",
+"alliance":"SHO Vanguards",
+"legion":"Alpha",
+"role":"Bowler",
+"power":9000
+}
+]
