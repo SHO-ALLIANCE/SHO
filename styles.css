@@ -1300,3 +1300,47 @@ transform:translateX(0);
 transform:translateX(-50%);
 }
 }
+.sho-countdown-section{
+text-align:center;
+padding:60px 20px;
+background:#0f172a;
+color:white;
+}
+
+.event-title{
+font-size:32px;
+margin-bottom:30px;
+color:#facc15;
+}
+
+.sho-countdown{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.time-card{
+background:#1e293b;
+padding:20px;
+border-radius:12px;
+width:100px;
+box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+.time-card span{
+font-size:32px;
+font-weight:bold;
+color:#facc15;
+}
+
+.time-card p{
+margin-top:5px;
+font-size:14px;
+}
+
+#event-status{
+margin-top:20px;
+font-size:18px;
+color:#22c55e;
+}
