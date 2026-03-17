@@ -1,53 +1,83 @@
+let playersData = []
+
 fetch("players.json")
 
-.then(res=>res.json())
+.then(res => res.json())
 
-.then(players=>{
+.then(players => {
 
-const table = document.getElementById("playerTable");
+playersData = players
 
-players.forEach(player=>{
+displayPlayers(players)
 
-let row = table.insertRow();
+})
 
-row.innerHTML =
+function displayPlayers(players){
 
-`<td><a href="player.html?id=${player.id}">${player.name}</a></td>
+const table = document.getElementById("playerTable")
+
+table.innerHTML = `
+
+<tr>
+<th>Name</th>
+<th>Alliance</th>
+<th>Legion</th>
+<th>Role</th>
+<th>Power</th>
+</tr>
+
+`
+
+players.forEach(player => {
+
+table.innerHTML += `
+
+<tr>
+<td><a href="player.html?id=${player.id}">${player.name}</a></td>
 <td>${player.alliance}</td>
 <td>${player.legion}</td>
 <td>${player.role}</td>
-<td>${player.power}</td>`;
+<td>${player.power}</td>
+</tr>
 
-});
+`
 
-const sorted = [...players].sort((a,b)=>b.power-a.power);
+})
 
-const ranking = document.getElementById("rankingTable");
+}
 
-sorted.forEach((player,i)=>{
+document.getElementById("sortSelect").addEventListener("change", function(){
 
-let row = ranking.insertRow();
+let value = this.value
 
-row.innerHTML =
+let sorted = [...playersData]
 
-`<td>${i+1}</td>
-<td>${player.name}</td>
-<td>${player.power}</td>`;
+if(value === "power"){
 
-});
+sorted.sort((a,b)=>b.power-a.power)
 
-});
+}
 
-document.getElementById("search").addEventListener("keyup",function(){
+else{
 
-const value = this.value.toLowerCase();
+sorted.sort((a,b)=>a[value].localeCompare(b[value]))
 
-document.querySelectorAll("#playerTable tr").forEach((row,i)=>{
+}
 
-if(i===0) return;
+displayPlayers(sorted)
 
-row.style.display = row.innerText.toLowerCase().includes(value) ? "" : "none";
+})
 
-});
+document.getElementById("search").addEventListener("keyup", function(){
 
-});
+let value = this.value.toLowerCase()
+
+let filtered = playersData.filter(player =>
+
+player.name.toLowerCase().includes(value)
+
+)
+
+displayPlayers(filtered)
+
+})
