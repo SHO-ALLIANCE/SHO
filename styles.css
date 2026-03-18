@@ -1585,3 +1585,18 @@ transform:translateY(0);
 opacity:1;
 }
 }
+body{
+background:#020617;
+color:white;
+}
+
+.btn{
+background:#facc15;
+color:black;
+padding:10px 20px;
+border-radius:8px;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
