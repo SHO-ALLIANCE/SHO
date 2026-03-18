@@ -1485,3 +1485,103 @@ color:#facc15;
 font-size:28px;
 
 }
+/* HERO SECTION */
+
+.leader-hero{
+text-align:center;
+padding:60px 20px;
+background:linear-gradient(135deg,#020617,#0f172a);
+color:white;
+}
+
+.leader-hero h1{
+font-size:42px;
+color:#facc15;
+}
+
+.leader-hero p{
+opacity:0.8;
+}
+
+/* SECTION */
+
+.leader-container{
+padding:40px 20px;
+text-align:center;
+}
+
+/* GRID */
+
+.leader-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+/* CARD */
+
+.leader-card{
+background:#1e293b;
+color:white;
+padding:20px;
+border-radius:12px;
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+/* HOVER ANIMATION */
+
+.leader-card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 0 20px rgba(250,204,21,0.5);
+}
+
+/* ROLE TEXT */
+
+.role{
+color:#facc15;
+margin:10px 0;
+}
+
+/* BADGE */
+
+.badge{
+display:inline-block;
+margin-top:10px;
+padding:5px 10px;
+border-radius:6px;
+font-size:12px;
+}
+
+/* GOLD BADGE */
+
+.gold{
+background:gold;
+color:black;
+}
+
+/* GLOW EFFECT */
+
+.glow{
+box-shadow:0 0 20px rgba(250,204,21,0.6);
+}
+
+/* ANIMATION */
+
+.leader-card{
+animation:fadeUp 0.6s ease forwards;
+opacity:0;
+}
+
+@keyframes fadeUp{
+0%{
+transform:translateY(20px);
+opacity:0;
+}
+100%{
+transform:translateY(0);
+opacity:1;
+}
+}
