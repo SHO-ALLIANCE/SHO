@@ -41,6 +41,7 @@ const player = players.find(p=>p.id===id);
 document.getElementById("profile").innerHTML =
 
 `<h2>${player.sid}</h2>
+<p><b>Team Name:</b> ${player.team}</p>
 <p><b>Alliance:</b> ${player.alliance}</p>
 <p><b>Legion:</b> ${player.legion}</p>
 <p><b>Role:</b> ${player.role}</p>
