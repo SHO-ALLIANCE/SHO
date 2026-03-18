@@ -73,7 +73,7 @@ rankingTable.innerHTML += `
 <td>${i+1}</td>
 <td>${player.sid}</td>
 <td>${player.team}</td>
-<td>${player.sirr}</td>
+<td>${player.sir}</td>
 </tr>
 
 `
