@@ -95,6 +95,25 @@
         <a href="alliances.html" class="btn">Explore Alliances</a>
         <a href="recruitment.html" class="btn secondary">Join Us</a>
     </div>
+        <button id="installBtn" class="btn">Install SHO App</button>
+
+<script>
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+e.preventDefault();
+deferredPrompt = e;
+
+document.getElementById("installBtn").style.display = "block";
+
+document.getElementById("installBtn").onclick = () => {
+deferredPrompt.prompt();
+deferredPrompt.userChoice.then(() => {
+deferredPrompt = null;
+});
+};
+});
+</script>
         
     </section>
     
@@ -337,5 +356,11 @@
     });
 </script>
     <script src="script.js" defer></script>
+    <script>
+if ('serviceWorker' in navigator) {
+navigator.serviceWorker.register('service-worker.js')
+.then(() => console.log("SHO App Ready"));
+}
+</script>
 </body>
 </html>
