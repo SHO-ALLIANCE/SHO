@@ -1,0 +1,20 @@
+{
+  "name": "SHO Alliance",
+  "short_name": "SHO",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#facc15",
+  "icons": [
+    {
+      "src": "sho-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/sho-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
