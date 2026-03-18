@@ -1,37 +1,42 @@
 [
 {
 "id":"akash",
-"name":"AKASH",
-"alliance":"SHO Vanguards",
+"sid":"AKASH74",
+  "team":"PERPETUAL",
+"alliance":"Vanguards",
 "legion":"Alpha",
 "role":"Finisher",
-"power":9500
+"sir":9500
 },
 
 {
 "id":"sunny",
-"name":"Sunny",
-"alliance":"SHO Enforcers",
+"sid":"Sunny",
+  "team":"SUNNY SUPERSTAR",
+"alliance":"Enforcers",
 "legion":"Titan",
 "role":"Opener",
-"power":9100
+"sir":9100
 },
 
 {
 "id":"morningstar",
-"name":"Morning Star",
-"alliance":"SHO Sentinels",
+"sid":"Morning Star",
+  "team":"A MORNING STAR",
+"alliance":"Outriders",
 "legion":"Phantom",
 "role":"All Rounder",
-"power":9200
+"sir":9200
 },
 
 {
 "id":"hari",
-"name":"Hari",
-"alliance":"SHO Vanguards",
+"sid":"Hari",
+  "team":"HARI",
+"alliance":"Vanguards",
 "legion":"Alpha",
 "role":"Bowler",
-"power":9000
+"sir":9000
 }
+  
 ]
