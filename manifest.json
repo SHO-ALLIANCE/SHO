@@ -7,14 +7,14 @@
   "theme_color": "#facc15",
   "icons": [
     {
-      "src": "sho-logo.png",
+      "src": "sho-logo.jpg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpg"
     },
     {
-      "src": "images/sho-logo.png",
+      "src": "images/sho-logo.jpg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/jpg"
     }
   ]
 }
