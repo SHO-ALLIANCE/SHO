@@ -19,11 +19,12 @@ const table = document.getElementById("playerTable")
 table.innerHTML = `
 
 <tr>
-<th>Name</th>
+<th>SID</th>
+<th>TEAM</th>
 <th>Alliance</th>
 <th>Legion</th>
 <th>Role</th>
-<th>Power</th>
+<th>SIR</th>
 </tr>
 
 `
@@ -33,11 +34,12 @@ players.forEach(player => {
 table.innerHTML += `
 
 <tr>
-<td><a href="player.html?id=${player.id}">${player.name}</a></td>
+<td><a href="player.html?id=${player.id}">${player.sid}</a></td>
+<td>${player.team}</td>
 <td>${player.alliance}</td>
 <td>${player.legion}</td>
 <td>${player.role}</td>
-<td>${player.power}</td>
+<td>${player.sir}</td>
 </tr>
 
 `
@@ -54,8 +56,9 @@ rankingTable.innerHTML = `
 
 <tr>
 <th>Rank</th>
-<th>Player</th>
-<th>Power</th>
+<th>SID</th>
+<th>Team name</th>
+<th>SIR</th>
 </tr>
 
 `
@@ -68,8 +71,9 @@ rankingTable.innerHTML += `
 
 <tr>
 <td>${i+1}</td>
-<td>${player.name}</td>
-<td>${player.power}</td>
+<td>${player.sid}</td>
+<td>${player.team}</td>
+<td>${player.sirr}</td>
 </tr>
 
 `
@@ -84,9 +88,9 @@ let value = this.value
 
 let sorted = [...playersData]
 
-if(value === "power"){
+if(value === "sir"){
 
-sorted.sort((a,b)=>b.power-a.power)
+sorted.sort((a,b)=>b.sir-a.sir)
 
 }
 
