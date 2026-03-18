@@ -97,7 +97,12 @@
 <p>© Strategic Heroes Oracles</p>
 
 </footer>
-
+<script>
+if ('serviceWorker' in navigator) {
+navigator.serviceWorker.register('service-worker.js')
+.then(() => console.log("SHO App Ready"));
+}
+</script>
 </body>
 
 </html>
