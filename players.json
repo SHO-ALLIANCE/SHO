@@ -1,6 +1,6 @@
 [
 {
-"id":"akash",
+"sid":"akash",
 "sid":"AKASH74",
   "team":"PERPETUAL",
 "alliance":"Vanguards",
@@ -10,7 +10,7 @@
 },
 
 {
-"id":"sunny",
+"sid":"sunny",
 "sid":"Sunny",
   "team":"SUNNY SUPERSTAR",
 "alliance":"Enforcers",
@@ -20,7 +20,7 @@
 },
 
 {
-"id":"morningstar",
+"sid":"morningstar",
 "sid":"Morning Star",
   "team":"A MORNING STAR",
 "alliance":"Outriders",
@@ -30,7 +30,7 @@
 },
 
 {
-"id":"hari",
+"sid":"hari",
 "sid":"Hari",
   "team":"HARI",
 "alliance":"Vanguards",
